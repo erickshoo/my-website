@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>About - Eric Shoo</title>
+  <meta name="description" content="About Eric Shoo, Information Technology Student, Tanzania.">
+  <meta name="keywords" content="Eric Shoo, Information Technology, Student, Tanzania, Software Development, Web Technologies">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@300;400;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Bootstrap CSS (CDN) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- AOS Animation -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Inline CSS -->
+  <style>
+    :root {
+      --brown: brown;
+      --dark-brown: #8b0000;
+      --light-bg: #fffdfb;
+    }
+
+    body {
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      color: #333;
+      background-color: var(--light-bg);
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Header */
+    header {
+      background: #fff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 10px 0;
+    }
+
+    header .logo img {
+      height: 50px;
+      border-radius: 30px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+    }
+
+    nav a {
+      color: brown;
+      text-decoration: none;
+      font-weight: 500;
+      border: 1px solid brown;
+      font-weight: 500;
+      border-radius: 10px;
+      padding: 10px;
+      transition: color 0.3s;
+    }
+
+    nav a:hover,
+    nav .active {
+      color: white;
+      background-color: brown;
+    }
+
+    .mobile-nav-toggle {
+      display: none;
+      font-size: 28px;
+      cursor: pointer;
+      color: var(--brown);
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 150vh;
+      background: url('image/erick.3.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      
+
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      /* background: rgba(139, 0, 0, 0.5); */
+    }
+
+    .hero-content {
+      position: relative;
+      text-align: center;
+      z-index: 2;
+      max-width: 700px;
+      padding: 20px;
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      color: #f8f8f8;
+    }
+
+    /* About Section */
+    .about-section {
+      padding: 100px 20px;
+      background-color: #fff;
+    }
+
+    .about-section h2 {
+      text-align: center;
+      color: var(--brown);
+      font-weight: 700;
+      margin-bottom: 50px;
+    }
+
+    .about-text {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .about-img {
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      margin: 80px 0;
+      padding-left: 40px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 15px;
+      top: 0;
+      height: 100%;
+      width: 2px;
+      background: var(--brown);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 40px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -3px;
+      top: 0;
+      height: 14px;
+      width: 14px;
+      border-radius: 50%;
+      background: var(--brown);
+    }
+
+    .timeline-item h5 {
+      font-weight: 600;
+      color: var(--brown);
+    }
+
+    /* Quote */
+    .quote {
+      background-color: var(--brown);
+      color: #fff;
+      padding: 80px 20px;
+      text-align: center;
+      font-style: italic;
+      font-size: 1.3rem;
+    }
+
+    .quote span {
+      display: block;
+      margin-top: 10px;
+      font-weight: 600;
+    }
+
+    /* Footer */
+    footer {
+      background: #f9f9f9;
+      padding: 25px 0;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #444;
+      margin-top: 50px;
+    }
+
+    footer strong {
+      color: var(--brown);
+    }
+
+    .header-social-links a {
+      color: brown;
+      font-size: 1.2rem;
+      margin-left: 12px;
+      transition: 0.3s;
+    }
+
+    .header-social-links a:hover {
+      color: #8b0000;
+    }
+
+    /* Responsive */
+    @media (max-width: 991px) {
+      nav ul {
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 15px;
+        background: #fff;
+        width: 220px;
+        padding: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        display: none;
+      }
+
+      nav.active ul {
+        display: flex;
+      }
+
+      .mobile-nav-toggle {
+        display: block;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+
+      .hero-content p {
+        font-size: 1rem;
+      }
+
+      .about-section {
+        padding: 60px 15px;
+      }
+    }
+
+    /* Modern Professional Experience */
+    .timeline-modern {
+      position: relative;
+      margin-top: 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .timeline-modern::before {
+      content: "";
+      position: absolute;
+      left: 30px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--brown), #b22222);
+      opacity: 0.3;
+    }
+
+    .timeline-card {
+      position: relative;
+      background: #fff;
+      border-radius: 18px;
+      padding: 25px 25px 25px 75px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+
+    .timeline-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+      background: linear-gradient(135deg, #fff, #fff7f5);
+    }
+
+    .timeline-icon {
+      position: absolute;
+      left: 15px;
+      top: 25px;
+      background: var(--brown);
+      color: #fff;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      box-shadow: 0 4px 12px rgba(139, 0, 0, 0.3);
+    }
+
+    .timeline-date {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--dark-brown);
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .timeline-title {
+      font-weight: 700;
+      color: var(--brown);
+      margin-bottom: 10px;
+    }
+
+    .timeline-content p {
+      color: #444;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .timeline-modern::before {
+        left: 20px;
+      }
+
+      .timeline-card {
+        padding: 20px 20px 20px 60px;
+      }
+
+      .timeline-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+      }
+
+      .timeline-title {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header id="header" class="header d-flex align-items-center light-background sticky-top">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <img src="image/Shoo.jpg" alt="Logo">
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html"><i class="bi bi-house-door"></i> Home</a></li>
+          <li><a href="about.html" class="active"><i class="bi bi-person-circle"></i> About</a></li>
+          <li><a href="portfolio.html"><i class="bi bi-briefcase"></i> Portfolio</a></li>
+          <li><a href="testimonials.html"><i class="bi bi-chat-quote"></i> Testimonials</a></li>
+          <li><a href="blog.html"><i class="bi bi-journal-text"></i> Blog</a></li>
+          <li><a href="contact.html"><i class="bi bi-envelope"></i> Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle bi bi-list"></i>
+      </nav>
+
+      <div class="header-social-links">
+        <a href="#"><i class="bi bi-twitter-x"></i></a>
+        <a href="#"><i class="bi bi-facebook"></i></a>
+        <a href="#"><i class="bi bi-instagram"></i></a>
+        <a href="#"><i class="bi bi-linkedin"></i></a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content" data-aos="fade-up">
+      <h1>About Eric Shoo</h1>
+      <p>Information Technology Student | Software Development Enthusiast | Web Technologies Explorer</p>
+    </div>
+    </section>
+
+  <!-- About Section -->
+  <section class="about-section">
+    <div class="container">
+      <h2 data-aos="fade-up">Who Is Eric Shoo?</h2>
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-4" data-aos="fade-right">
+          <img src="image/shoo.2.jpg" alt="erick shoo" class="img-fluid about-img">
+        </div>
+        <div class="col-lg-6" data-aos="fade-left">
+          <p class="about-text">
+            <strong>Eric Shoo</strong> <p class="about-text">
+  Erick Rogathe Shoo is a Tanzanian Information Technology student passionate about software development, web technologies, and digital innovation. He is committed to using technology to solve real-world problems and develop useful digital solutions.
+</p>
+
+<p class="about-text">
+  He is currently pursuing Information Technology studies at the National Institute of Transport (NIT) in Tanzania. His technical skills and learning interests include PHP, C, C#, Python, HTML, CSS, JavaScript, and database management systems. He is also interested in software engineering, system analysis and design, and backend web development.
+</p>
+
+<p class="about-text">
+  In addition to his academic journey, Erick is dedicated to building practical projects and continuously improving his programming skills. His goal is to become a professional backend web developer and software engineer. He aspires to create reliable and user-friendly systems, provide IT services, and develop innovative digital products that help businesses and communities grow.
+</p>
+          </p>
+        </div>
+      </div>
+
+
+      <!-- Timeline -->
+      <h2 data-aos="fade-up">Professional Experience</h2>
+
+<div class="timeline-modern mt-5" data-aos="fade-up">
+
+  <div class="timeline-card" data-aos="fade-right">
+    <div class="timeline-icon">
+      <i class="bi bi-mortarboard-fill"></i>
+    </div>
+    <div class="timeline-content">
+      <span class="timeline-date">2025 – Present</span>
+      <h5 class="timeline-title">National Institute of Transport (NIT)</h5>
+      <p>
+        Pursuing Information Technology studies, developing knowledge in
+        programming, computer systems, database management, and software
+        development.
+      </p>
+    </div>
+  </div>
+
+  <div class="timeline-card" data-aos="fade-left">
+    <div class="timeline-icon">
+      <i class="bi bi-code-slash"></i>
+    </div>
+    <div class="timeline-content">
+      <span class="timeline-date">2025 – Present</span>
+      <h5 class="timeline-title">Software Development &amp; Web Technologies</h5>
+      <p>
+        Building practical programming skills using
+        <strong>PHP, C, C#, Python, HTML, CSS, and JavaScript</strong>.
+        Learning to develop websites, database-driven applications, and
+        software solutions.
+      </p>
+    </div>
+  </div>
+
+  <div class="timeline-card" data-aos="fade-right">
+    <div class="timeline-icon">
+      <i class="bi bi-database-fill-gear"></i>
+    </div>
+    <div class="timeline-content">
+      <span class="timeline-date">Ongoing</span>
+      <h5 class="timeline-title">Personal IT Projects</h5>
+      <p>
+        Practicing software development through personal projects involving
+        database management, student registration systems, web applications,
+        and backend development. Focused on improving problem-solving skills
+        and creating practical digital solutions.
+      </p>
+    </div>
+  </div>
+
+</div>
+
+      <!-- Quote -->
+        <div class="quote" data-aos="fade-up">
+            <p>"Technology is the key to unlocking the future. I am committed to learning, innovating, and creating digital solutions that make a difference."</p>
+            <span>- Erick Rogathe Shoo</span>
+        </div>
+      <div class="hero-content" data-aos="zoom-in">
+  <h1>About Erick Rogathe Shoo</h1>
+  <p>Passionate About Technology, Software Development, and Digital Innovation</p>
+</div>
+</section>
+      <!-- Footer -->
+      <footer>
+        <p>© 2025 <strong>Erick Rogathe Shoo</strong> | All Rights Reserved.</p>
+      </footer>
+
+      <!-- Scripts -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+      <script>
+        AOS.init({ duration: 1000, once: true });
+
+        // Mobile Nav
+        const navToggle = document.querySelector('.mobile-nav-toggle');
+        const navMenu = document.querySelector('#navmenu');
+        navToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+      </script>
+
+</body>
+
+</html>

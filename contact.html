@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — Erick Shoo</title>
+  <meta name="description" content="Contact Erick Shoo for IT support, web development, and technology projects.">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    :root {
+      --brown: brown;
+      --tan: tan;
+      --cream: #fffdfb;
+      --muted: #6b5a4a;
+      --soft-tan: #f7efe7;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+      background: #fff;
+      color: var(--brown);
+    }
+    header {
+      background: #fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,.08);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 10px 0;
+    }
+    .header-inner {
+      width: min(1400px, 94%);
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .logo img { height: 50px; width: auto; border-radius: 30px; display: block; }
+    nav ul {
+      list-style: none; display: flex; flex-wrap: wrap; gap: 12px;
+      margin: 0; padding: 0; align-items: center;
+    }
+    nav a {
+      color: brown; text-decoration: none; font-weight: 500;
+      border: 1px solid brown; border-radius: 10px; padding: 9px 11px;
+      display: inline-flex; align-items: center; gap: 7px; transition: .25s;
+    }
+    nav a:hover, nav a.active { color: white; background: brown; }
+    .header-social-links { display: flex; gap: 12px; }
+    .header-social-links a { color: var(--brown); font-size: 1.2rem; }
+    .header-social-links a:hover { color: #8b0000; }
+    .mobile-nav-toggle { display: none; font-size: 28px; cursor: pointer; color: var(--brown); }
+    .hero {
+      background: linear-gradient(135deg, #f7efe7, #fffdfb);
+      padding: 64px 20px; text-align: center; border-bottom: 1px solid #eadbcf;
+    }
+    .hero h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; margin-bottom: 12px; }
+    .hero p { max-width: 700px; margin: auto; color: var(--muted); font-size: 1.1rem; }
+    .contact-wrap { width: min(1150px, 92%); margin: 50px auto 65px; }
+    .section-heading { text-align: center; margin-bottom: 30px; }
+    .section-heading h2 { font-weight: 700; margin-bottom: 8px; }
+    .section-heading p { color: var(--muted); }
+    .contact-card, .contact-form {
+      height: 100%; background: var(--cream); padding: 28px;
+      border-radius: 16px; border: 1px solid #efe4da;
+      box-shadow: 0 12px 30px rgba(70, 35, 10, .07);
+    }
+    .contact-item { display: flex; align-items: flex-start; gap: 15px; margin: 23px 0; }
+    .contact-icon {
+      width: 46px; height: 46px; flex: 0 0 46px; display: grid; place-items: center;
+      background: #f0dfce; color: var(--brown); border-radius: 12px; font-size: 1.25rem;
+    }
+    .contact-item h3 { font-size: 1.08rem; font-weight: 700; margin: 1px 0 5px; }
+    .contact-item p, .contact-item a { color: var(--muted); margin: 0; text-decoration: none; overflow-wrap: anywhere; }
+    .contact-item a:hover { color: var(--brown); text-decoration: underline; }
+    .form-label { font-weight: 600; color: var(--brown); }
+    .form-control { border: 1px solid #d9c5b4; border-radius: 9px; padding: 12px 13px; }
+    .form-control:focus { border-color: brown; box-shadow: 0 0 0 .2rem rgba(165,42,42,.12); }
+    .btn-brown {
+      background: brown; color: white; border: 1px solid brown;
+      border-radius: 10px; padding: 12px 22px; font-weight: 600; transition: .25s;
+    }
+    .btn-brown:hover { background: #6f2020; color: white; }
+    .form-note { color: var(--muted); font-size: .9rem; margin-top: 12px; }
+    footer { background: var(--cream); border-top: 1px solid #efe4da; padding: 22px 12px; text-align: center; color: var(--muted); }
+    footer strong { color: brown; }
+    @media (max-width: 1100px) {
+      .header-social-links { display: none; }
+      .mobile-nav-toggle { display: block; }
+      nav ul {
+        display: none; position: absolute; top: 75px; right: 3%; width: 230px;
+        padding: 16px; background: #fff; box-shadow: 0 4px 16px rgba(0,0,0,.13);
+        border-radius: 12px; flex-direction: column; align-items: stretch;
+      }
+      nav.active ul { display: flex; }
+      nav a { width: 100%; }
+    }
+    @media (max-width: 575px) {
+      .hero { padding: 48px 18px; }
+      .contact-wrap { margin-top: 32px; }
+      .contact-card, .contact-form { padding: 21px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a href="index.html" class="logo" aria-label="Erick Shoo home">
+        <img src="image/Shoo.jpg" alt="Erick Shoo logo">
+      </a>
+      <nav id="navmenu" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html"><i class="bi bi-house-door"></i> Home</a></li>
+          <li><a href="about.html"><i class="bi bi-person-circle"></i> About</a></li>
+          <li><a href="portfolio.html"><i class="bi bi-briefcase"></i> Portfolio</a></li>
+          <li><a href="testimonials.html"><i class="bi bi-chat-quote"></i> Testimonials</a></li>
+          <li><a href="blog.html"><i class="bi bi-journal-text"></i> Blog</a></li>
+          <li><a href="contact.html" class="active" aria-current="page"><i class="bi bi-envelope"></i> Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-social-links" aria-label="Social links">
+        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+      </div>
+      <i class="mobile-nav-toggle bi bi-list" role="button" tabindex="0" aria-label="Toggle navigation" aria-expanded="false"></i>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Contact Me</h1>
+      <p>Have a project, IT question, or collaboration idea? I would be happy to hear from you.</p>
+    </section>
+
+    <section class="contact-wrap">
+      <div class="section-heading">
+        <h2>Let's Connect</h2>
+        <p>Contact me about web development, IT support, or technology projects.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-lg-5">
+          <div class="contact-card">
+            <h2 class="h4 fw-bold mb-3">Contact Information</h2>
+            <p class="text-secondary mb-4">Use the details below to get in touch. Replace the placeholders with your real contact details.</p>
+            <div class="contact-item">
+              <div class="contact-icon"><i class="bi bi-person"></i></div>
+              <div><h3>Name</h3><p>Erick Rogathe Shoo</p></div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon"><i class="bi bi-envelope"></i></div>
+              <div><h3>Email</h3><a href="mailto:your-email@example.com">your-email@example.com</a></div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon"><i class="bi bi-telephone"></i></div>
+              <div><h3>Phone / WhatsApp</h3><p>Add your phone number here</p></div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon"><i class="bi bi-geo-alt"></i></div>
+              <div><h3>Location</h3><p>Tanzania</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-7">
+          <div class="contact-form">
+            <h2 class="h4 fw-bold mb-2">Send a Message</h2>
+            <p class="text-secondary mb-4">Fill in the form and your default email application will open with the message prepared.</p>
+            <form id="contactForm">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="name" class="form-label">Your Name</label>
+                  <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="email" class="form-label">Your Email</label>
+                  <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
+                </div>
+                <div class="col-12">
+                  <label for="subject" class="form-label">Subject</label>
+                  <input type="text" class="form-control" id="subject" name="subject" placeholder="What would you like to discuss?" required>
+                </div>
+                <div class="col-12">
+                  <label for="message" class="form-label">Message</label>
+                  <textarea class="form-control" id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn btn-brown"><i class="bi bi-send me-2"></i>Prepare Email</button>
+                  <p class="form-note">Note: this page does not send messages to a server. Update the email placeholder in the HTML first, or connect a PHP backend to receive messages directly.</p>
+                  <div id="formStatus" class="mt-2" role="status" aria-live="polite"></div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p class="mb-0">© <span id="year"></span> <strong>Erick Rogathe Shoo</strong> | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    const navToggle = document.querySelector('.mobile-nav-toggle');
+    const navMenu = document.querySelector('#navmenu');
+
+    function toggleNavigation() {
+      const isOpen = navMenu.classList.toggle('active');
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+    }
+    navToggle.addEventListener('click', toggleNavigation);
+    navToggle.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        toggleNavigation();
+      }
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    document.getElementById('contactForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      const recipient = 'your-email@example.com'; // Replace with your real email address
+      const name = document.getElementById('name').value.trim();
+      const senderEmail = document.getElementById('email').value.trim();
+      const subject = document.getElementById('subject').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!name || !senderEmail || !subject || !message) {
+        document.getElementById('formStatus').textContent = 'Please fill in all fields.';
+        return;
+      }
+
+      const body = `Name: ${name}\nReply email: ${senderEmail}\n\n${message}`;
+      const mailto = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      document.getElementById('formStatus').textContent =
+        recipient === 'your-email@example.com'
+          ? 'Before using this form, replace your-email@example.com in the HTML and JavaScript with your real email address.'
+          : 'Opening your email application...';
+      if (recipient !== 'your-email@example.com') {
+        window.location.href = mailto;
+      }
+    });
+  </script>
+</body>
+</html>

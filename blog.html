@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Erick Shoo's IT journey, programming projects, and web development learning blog.">
+  <title>Blog | Erick Shoo</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Original brown, tan, and cream palette */
+      --brown: brown;
+      --brown-dark: brown;
+      --tan: tan;
+      --cream: #fffdfb;
+      --muted: #6b5a4a;
+      --page: #ffffff;
+      --border: #eadfd3;
+      --shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: var(--page);
+      color: var(--brown);
+      line-height: 1.7;
+    }
+    a { color: inherit; }
+
+    /* Header and navigation */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,.97);
+      box-shadow: 0 2px 12px rgba(0,0,0,.07);
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: auto;
+      min-height: 76px;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+    .logo img {
+      display: block;
+      width: 52px;
+      height: 52px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .navmenu ul {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .navmenu a {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 12px;
+      border: 1px solid var(--brown);
+      border-radius: 10px;
+      color: var(--brown);
+      text-decoration: none;
+      font-size: .9rem;
+      font-weight: 500;
+      transition: background .2s, color .2s, border-color .2s;
+    }
+    .navmenu a:hover, .navmenu a.active {
+      color: #fff;
+      background: var(--brown);
+      border-color: var(--brown);
+    }
+    .header-social-links { display: flex; gap: 12px; }
+    .header-social-links a {
+      color: var(--brown);
+      font-size: 1.15rem;
+      text-decoration: none;
+    }
+    .header-social-links a:hover { color: var(--brown-dark); }
+    .mobile-nav-toggle {
+      display: none;
+      border: 0;
+      background: transparent;
+      color: var(--brown);
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
+    /* Page introduction */
+    .hero {
+      max-width: 1200px;
+      margin: 32px auto 0;
+      padding: 52px 24px;
+      text-align: center;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: linear-gradient(0deg, rgba(123, 63, 0, 0.06), rgba(123, 63, 0, 0.02));
+    }
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--brown);
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    .hero h1 { margin: 0; color: var(--brown-dark); font-size: clamp(2rem, 4vw, 3rem); line-height: 1.2; }
+    .hero p { max-width: 700px; margin: 14px auto 0; color: var(--muted); }
+
+    /* Main blog layout */
+    .container-blog {
+      max-width: 1200px;
+      margin: auto;
+      padding: 32px 24px 10px;
+    }
+    .blog-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(260px, .9fr);
+      align-items: start;
+      gap: 24px;
+    }
+    .posts-column { min-width: 0; }
+    .section-heading { margin: 0 0 16px; color: var(--brown-dark); font-size: 1.35rem; }
+    .post-card, .widget {
+      min-width: 0;
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--cream);
+      box-shadow: var(--shadow);
+    }
+    .post-card { margin-bottom: 18px; }
+    .thumb {
+      width: 100%;
+      height: 260px;
+      margin-bottom: 14px;
+      border-radius: 10px;
+      background-color: var(--tan);
+      background-size: cover;
+      background-position: center;
+    }
+    .featured-post .thumb { height: 360px; }
+    .meta { color: var(--muted); font-size: .8rem; }
+    .post-card h2, .post-card h3 { margin: 8px 0 10px; color: var(--brown-dark); line-height: 1.4; }
+    .post-card h2 { font-size: 1.45rem; }
+    .post-card h3 { font-size: 1.08rem; }
+    .post-card p { margin: 0; color: var(--muted); font-size: .92rem; }
+    .post-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .post-list .post-card { margin: 0; }
+    .post-list .thumb { height: 190px; }
+
+    /* Sidebar */
+    .sidebar { display: grid; gap: 18px; }
+    .widget h2 { margin: 0 0 10px; color: var(--brown-dark); font-size: 1.1rem; }
+    .widget p { margin: 0; color: var(--muted); font-size: .9rem; }
+    .author-row { display: flex; align-items: center; gap: 13px; margin-bottom: 12px; }
+    .author-avatar {
+      width: 62px;
+      height: 62px;
+      flex: 0 0 62px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: var(--tan);
+    }
+    .author-row h3 { margin: 0; color: var(--brown-dark); font-size: 1rem; }
+    .author-row span { color: var(--muted); font-size: .8rem; }
+    .skill-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .skill-list span {
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: #f5e9dc;
+      color: var(--brown-dark);
+      font-size: .78rem;
+    }
+    .project-link {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 11px 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--brown);
+      text-decoration: none;
+      font-size: .88rem;
+    }
+    .project-link:last-child { border-bottom: 0; padding-bottom: 0; }
+    .project-link i { margin-top: 3px; }
+    .contact-link {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 9px 14px;
+      border-radius: 8px;
+      background: var(--brown);
+      color: #fff;
+      text-decoration: none;
+      font-size: .85rem;
+      font-weight: 500;
+    }
+    .contact-link:hover { background: var(--brown-dark); }
+
+    footer {
+      margin-top: 42px;
+      padding: 24px 16px;
+      background: var(--cream);
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      text-align: center;
+      font-size: .88rem;
+    }
+    footer strong { color: var(--brown); }
+
+    @media (max-width: 1050px) {
+      .header-inner { flex-wrap: wrap; }
+      .header-social-links { margin-left: auto; }
+      .navmenu { order: 4; width: 100%; }
+      .navmenu ul { justify-content: center; flex-wrap: wrap; }
+      .blog-layout { grid-template-columns: minmax(0, 1.7fr) minmax(240px, 1fr); }
+    }
+    @media (max-width: 760px) {
+      .header-inner { min-height: 68px; padding: 10px 16px; }
+      .logo img { width: 46px; height: 46px; }
+      .mobile-nav-toggle { display: block; }
+      .header-social-links { margin-left: auto; }
+      .navmenu { display: none; order: 5; width: 100%; }
+      .navmenu.active { display: block; }
+      .navmenu ul { align-items: stretch; flex-direction: column; gap: 5px; padding: 10px 0 4px; }
+      .navmenu a { display: flex; }
+      .blog-layout { grid-template-columns: 1fr; }
+      .hero { margin: 20px 16px 0; padding: 36px 18px; }
+      .container-blog { padding: 24px 16px 8px; }
+      .featured-post .thumb { height: 240px; }
+      .post-list { grid-template-columns: 1fr; }
+      .post-list .thumb { height: 220px; }
+    }
+    @media (max-width: 420px) {
+      .header-social-links { gap: 8px; }
+      .header-social-links a { font-size: 1rem; }
+      .post-card, .widget { padding: 14px; }
+      .thumb, .featured-post .thumb, .post-list .thumb { height: 200px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo" aria-label="Erick Shoo home">
+        <img src="image/shoo.jpg" alt="Erick Shoo profile logo">
+      </a>
+
+      <button class="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="navmenu">
+        <i class="bi bi-list" aria-hidden="true"></i>
+      </button>
+
+      <nav id="navmenu" class="navmenu" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html"><i class="bi bi-house-door" aria-hidden="true"></i> Home</a></li>
+          <li><a href="about.html"><i class="bi bi-person-circle" aria-hidden="true"></i> About</a></li>
+          <li><a href="portfolio.html"><i class="bi bi-briefcase" aria-hidden="true"></i> Portfolio</a></li>
+          <li><a href="testimonials.html"><i class="bi bi-chat-quote" aria-hidden="true"></i> Testimonials</a></li>
+          <li><a href="blog.html" class="active" aria-current="page"><i class="bi bi-journal-text" aria-hidden="true"></i> Blog</a></li>
+          <li><a href="contact.html"><i class="bi bi-envelope" aria-hidden="true"></i> Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Replace # with your real social profile URLs. -->
+      <div class="header-social-links" aria-label="Social links">
+        <a href="#" aria-label="X / Twitter"><i class="bi bi-twitter-x"></i></a>
+        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <p class="eyebrow">Ideas • Learning • Technology</p>
+      <h1 id="page-title">My IT Journey &amp; Blog</h1>
+      <p>Sharing my programming journey, practical projects, lessons learned, and ambitions in web and software development.</p>
+    </section>
+
+    <div class="container-blog">
+      <div class="blog-layout">
+        <section class="posts-column" aria-labelledby="latest-posts">
+          <h2 id="latest-posts" class="section-heading">Latest Posts</h2>
+
+          <article class="post-card featured-post">
+            <div class="thumb" style="background-image:url('image/shoo.jpg')" role="img" aria-label="Erick Shoo"></div>
+            <div class="meta">IT Journey · Personal Introduction</div>
+            <h2>My Journey in Information Technology</h2>
+            <p>Technology is more than writing code. It is about solving problems, creating useful systems, and making everyday tasks easier through innovation. As an IT student, I am developing my skills in programming, web development, database management, and software development. My goal is to use technology to build practical solutions for people and businesses. — <strong>Erick Shoo</strong></p>
+          </article>
+
+          <div class="post-list">
+            <article class="post-card">
+              <div class="thumb" style="background-image:url('IMG-20250113-WA0004.jpg')" role="img" aria-label="Programming and software development project"></div>
+              <div class="meta">Programming · Practical Learning</div>
+              <h3>Learning Programming Through Real Projects</h3>
+              <p>I practise programming with PHP, C, C#, and Python, while learning how to work with databases and web technologies. Building small projects helps me improve my problem-solving skills and understand how software works. — <strong>Erick Shoo</strong></p>
+            </article>
+
+            <article class="post-card">
+              <div class="thumb" style="background-image:url('Screenshot_20251024_161900_X.jpg')" role="img" aria-label="Web development learning"></div>
+              <div class="meta">Web Development · Career Goals</div>
+              <h3>Working Toward Becoming a Backend Developer</h3>
+              <p>I am building my understanding of PHP, MySQL, Laravel, APIs, validation, and application security. My long-term goal is to develop reliable, secure, database-driven applications and help businesses solve problems with technology. — <strong>Erick Shoo</strong></p>
+            </article>
+          </div>
+        </section>
+
+        <aside class="sidebar" aria-label="About Erick and useful links">
+          <section class="widget">
+            <h2>About the Author</h2>
+            <div class="author-row">
+              <img class="author-avatar" src="image/shoo.jpg" alt="Erick Shoo">
+              <div>
+                <h3>Erick Shoo</h3>
+                <span>IT Student · Aspiring Backend Developer</span>
+              </div>
+            </div>
+            <p>I am an IT student interested in programming, web development, databases, and building practical software solutions. This blog documents my learning journey and projects.</p>
+          </section>
+
+          <section class="widget">
+            <h2>Technologies I Practise</h2>
+            <p>These are technologies I am learning and using in practice; my experience with each one continues to grow.</p>
+            <div class="skill-list">
+              <span>HTML &amp; CSS</span><span>JavaScript</span><span>PHP</span><span>MySQL</span><span>C</span><span>C#</span><span>Python</span><span>Laravel</span><span>Git &amp; GitHub</span>
+            </div>
+          </section>
+
+          <section class="widget">
+            <h2>Areas of Interest</h2>
+            <a class="project-link" href="portfolio.html"><i class="bi bi-code-slash" aria-hidden="true"></i><span><strong>Web Development</strong><br>Building responsive websites and web applications.</span></a>
+            <a class="project-link" href="portfolio.html"><i class="bi bi-database" aria-hidden="true"></i><span><strong>Database Systems</strong><br>Learning how to store, manage, and retrieve data.</span></a>
+            <a class="project-link" href="portfolio.html"><i class="bi bi-window" aria-hidden="true"></i><span><strong>Software Projects</strong><br>Practising by building useful systems.</span></a>
+          </section>
+
+          <section class="widget">
+            <h2>Let's Connect</h2>
+            <p>Have a project idea, a question, or an opportunity to collaborate? Visit my contact page.</p>
+            <a class="contact-link" href="contact.html">Contact Me <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+          </section>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© <span id="current-year">2026</span> <strong>Erick Shoo</strong>. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const navToggle = document.querySelector('.mobile-nav-toggle');
+    const navMenu = document.querySelector('#navmenu');
+
+    if (navToggle && navMenu) {
+      navToggle.addEventListener('click', () => {
+        const isOpen = navMenu.classList.toggle('active');
+        navToggle.setAttribute('aria-expanded', String(isOpen));
+        navToggle.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+        const icon = navToggle.querySelector('i');
+        if (icon) {
+          icon.classList.toggle('bi-list', !isOpen);
+          icon.classList.toggle('bi-x-lg', isOpen);
+        }
+      });
+    }
+
+    document.querySelector('#current-year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
